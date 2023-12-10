@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package other;
+
+import "google/api/annotations.proto";
+
+option go_package = "geohub.io/protos/other";
+
+message OrganizationCreate { string name = 1; }
+
+message ProjectCreate {
+  string name = 1;
+  string externalId = 2;
+}
+
+message Project {
+  string id = 1;         // Unique identifier
+  string name = 2;       // The name of the project
+  string externalId = 3; // internal identifier, e.g. '20231234'
+}
+
+message ProjectGet { string id = 1; }
+
+service OtherService {
+  rpc GetProject(ProjectGet) returns (Project) {
+    option (google.api.http) = {
+      get : "/project/{id}"
+    };
+  }
+
+  rpc CreateProject(ProjectCreate) returns (ProjectCreate) {
+    option (google.api.http) = {
+      post : "/project"
+    };
+  }
+
+  rpc CreateOrganization(ProjectCreate) returns (ProjectCreate) {
+    option (google.api.http) = {
+      post : "/organization"
+      body : "*"
+    };
+  }
+}
