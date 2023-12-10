@@ -5,6 +5,7 @@ package citadel;
 import "google/api/annotations.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
 
+
 option go_package = "geohub.io/protos/citadel";
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   info: {
@@ -70,7 +71,6 @@ service CitadelService {
   rpc GetProject(ProjectGet) returns (Project) {
     option (google.api.http) = {
       get : "/project/{id}"
-      body : "*"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       security: {
@@ -88,7 +88,6 @@ service CitadelService {
   rpc CreateProject(ProjectCreate) returns (ProjectCreate) {
     option (google.api.http) = {
       post : "/project"
-      body : "*"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       security: {
