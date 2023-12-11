@@ -5,52 +5,7 @@ package citadel;
 import "google/api/annotations.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
 
-
 option go_package = "geohub.io/protos/citadel";
-option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
-  info: {
-    title: "Gates of Moria";
-    description: "gRPC gateway for geohub.io"
-    version: "1.0";
-    contact: {
-      name: "gRPC-Gateway project";
-      url: "https://github.com/grpc-ecosystem/grpc-gateway";
-      email: "none@example.com";
-    };
-  };
-  external_docs: {
-    url: "https://github.com/grpc-ecosystem/grpc-gateway";
-    description: "More about gRPC-Gateway";
-  }
-  schemes: HTTPS;
-  consumes: "application/json";
-  produces: "application/json";
-  security_definitions: {
-    security: {
-      key: "OAuth2";
-      value: {
-        type: TYPE_OAUTH2;
-        flow: FLOW_ACCESS_CODE;
-        authorization_url: "https://example.com/oauth/authorize";
-        token_url: "https://example.com/oauth/token";
-        scopes: {
-          scope: {
-            key: "read";
-            value: "Grants read access";
-          }
-          scope: {
-            key: "write";
-            value: "Grants write access";
-          }
-          scope: {
-            key: "admin";
-            value: "Grants read and write access to administrative information";
-          }
-        }
-      }
-    }
-  }
-};
 
 message OrganizationCreate { string name = 1; }
 
